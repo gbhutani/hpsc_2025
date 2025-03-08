@@ -1,6 +1,4 @@
 
-
-
 def nth_order_root(n, a, xi=10, debug=False):
 	"""
 	Calculates the nth order root of a.
@@ -12,11 +10,9 @@ def nth_order_root(n, a, xi=10, debug=False):
 
 	returns		: nth order root of a.
 	"""
-	def f(x):
-		return x**n - a
 
-	def fp(x):
-		return n * x**(n-1)
+	f = lambda x: x**n - a
+	fp = lambda x: n * x**(n-1)
 
 	for i in range(10):
 		x0 = xi - f(xi) / fp(xi)
