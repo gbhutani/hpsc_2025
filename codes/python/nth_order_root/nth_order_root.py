@@ -1,21 +1,31 @@
 
-n = 2			# order of root
-xi = 10			# initial guess
-a = 25			# root of the number a :--> a**(1/n)
 
 
-def f(x):
-	return x**n - a
+def nth_order_root(n, a, xi=10, debug=False):
+	"""
+	Calculates the nth order root of a.
+	
+	n (real)    : order of root.
+	a (real)    : root of which number.
+	xi (real)   : initial guess value. Optional, default 10.
+	debug (bool): allows printing iterative results. Optional, default False.
 
-def fp(x):
-	return n * x**(n-1)
+	returns		: nth order root of a.
+	"""
+	def f(x):
+		return x**n - a
 
-for i in range(10):
-	x0 = xi - f(xi) / fp(xi)
+	def fp(x):
+		return n * x**(n-1)
 
-	print(f'iteration {i}: x0 = {x0:.15f}')
-	xi = x0
+	for i in range(10):
+		x0 = xi - f(xi) / fp(xi)
 
+		if debug:
+			print(f'iteration {i}: x0 = {x0:.15f}')
+		xi = x0
 
+	if debug: print(f'\ncorrect value: {a ** (1/n):.15f}, my_estimation : {x0:.15f}')
+	return x0
 
-print(f'\ncorrect value: {a ** (1/n):.15f}, my_estimation : {x0:.15f}')
+print(nth_order_root(n=2, a=4, debug=True))
