@@ -1,5 +1,5 @@
 
-def nth_order_root(n, a, xi=10, debug=False):
+def nth_order_root(n, a, xi=10, tolerance=1.0e-14, debug=False):
 	"""
 	Calculates the nth order root of a.
 	
@@ -17,11 +17,12 @@ def nth_order_root(n, a, xi=10, debug=False):
 	for i in range(10):
 		x0 = xi - f(xi) / fp(xi)
 
-		if debug:
-			print(f'iteration {i}: x0 = {x0:.15f}')
-		xi = x0
+		rel_err = abs((x0 - xi) / xi)
+		if rel_err <= tolerance: break
+		if debug: print(f'iteration {i}: x0 = {x0:.15f}, rel_err = {rel_err:.5e}')
 
+		xi = x0
 	if debug: print(f'\ncorrect value: {a ** (1/n):.15f}, my_estimation : {x0:.15f}')
 	return x0
 
-print(nth_order_root(n=2, a=4, debug=True))
+# print(nth_order_root(n=2, a=4, debug=True))
