@@ -1,7 +1,7 @@
-import numpy as np
+from numpy import power
 
 
-def nth_root(n, x, init_guess=10, tolerance=1.0e-14, debug=False):
+def nth_root(n, x, init_guess=10, k_max=100, tolerance=1.0e-14, debug=False):
 	"""
 	Computes the nth order root of a given number 'x', using Newton's method.
 	
@@ -38,16 +38,16 @@ def nth_root(n, x, init_guess=10, tolerance=1.0e-14, debug=False):
 	fp = lambda s: n * s**(n-1)
 
 	s_i = init_guess
-	for i in range(100):
+	for i in range(k_max):
 		s_0 = s_i - f(s_i) / fp(s_i)
     	
 		rel_err = abs((s_0 - s_i) / s_i)
 		if debug: print(f'iteration {i}: s_i = {s_0:.15f}, rel_err = {rel_err:.5e}')
 		
 		if rel_err <= tolerance: break
-		s_i = s_0
 
-	if debug: print(f'correct value: {x ** (1/n):.15f}, my_estimation : {s_0:.15f}\n')
+		s_i = s_0
+	if debug: print(f'correct value: {power(x, 1/n):.15f}, my_estimation : {s_0:.15f}\n')
 	return s_0
 
-print(nth_root(n=3, x=-510, debug=True))
+nth_root(n=2, x=154, debug=True)
