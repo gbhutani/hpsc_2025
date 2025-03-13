@@ -1,4 +1,4 @@
-from numpy import power
+from numpy import nan, power
 
 
 def nth_root(n, x, init_guess=10, k_max=100, tolerance=1.0e-14, debug=False):
@@ -32,7 +32,7 @@ def nth_root(n, x, init_guess=10, k_max=100, tolerance=1.0e-14, debug=False):
 	if x == 0:
 		return 0
 	elif x < 0:
-		return np.nan
+		return nan
 
 	f = lambda s: s**n - x
 	fp = lambda s: n * s**(n-1)
@@ -50,4 +50,4 @@ def nth_root(n, x, init_guess=10, k_max=100, tolerance=1.0e-14, debug=False):
 	if debug: print(f'correct value: {power(x, 1/n):.15f}, my_estimation : {s_0:.15f}\n')
 	return s_0
 
-nth_root(n=2, x=154, debug=True)
+nth_root(n=3, x=1e8, debug=True)
