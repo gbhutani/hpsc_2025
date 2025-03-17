@@ -5,3 +5,6 @@ desktop.ini
 *.svg
 
 .ipynb_checkpoints
+
+a.out
+
