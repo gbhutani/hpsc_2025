@@ -31,7 +31,7 @@ def send_email(type):
     server.starttls()
 
     # password.txt contains the email password or app password if Google 2-step verification is on
-    with open(r'D:\I-PhD 2022\HPC\Notes\password.txt', 'r') as file:
+    with open(r'D:\I-PhD 2022\HPC\Notes\random_letters.txt', 'r') as file:
         password = file.read()
         password = password.strip()
     server.login(myEmail, password)

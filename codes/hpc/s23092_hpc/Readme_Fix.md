@@ -4,14 +4,10 @@
 When attempting to send emails via Gmail's SMTP server using Python's `smtplib`, authentication fails with error messages such as:
 ```
 smtplib.SMTPAuthenticationError: (535, b'5.7.8 Username and Password not accepted.')
-```
-```
 smtplib.SMTPAuthenticationError: (534, b'5.7.9 Application-specific password required.')
 ```
 
 ## Solution
-To resolve the issue, follow these steps:
-
 ### Step 1: Enable 2-Step Verification
 1. Go to [Google Account Security](https://myaccount.google.com/security).
 2. Under **"Signing in to Google"**, enable **2-Step Verification**.
