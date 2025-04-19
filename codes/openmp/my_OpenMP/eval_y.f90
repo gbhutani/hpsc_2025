@@ -10,7 +10,7 @@ program evaluate_y
 	
 	dx = 1.d0 / n
 	
-	n_threads = THREADS
+	!$ n_threads = THREADS
 	
 	!$ call omp_set_num_threads(n_threads)
 	
